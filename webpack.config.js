@@ -21,7 +21,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules\/(?!shield\.io)/,
+        exclude: /node_modules\/(?!shields\.io)/,
         loader: 'babel-loader',
         options: {
           babelrc: true,
