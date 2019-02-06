@@ -7,11 +7,11 @@ const env = process.env.NODE_ENV || 'development';
 module.exports = {
   mode: env,
   entry: {
-    content: './lib/content/main.js',
-    background: './lib/background/main.js',
-    options: './lib/options/main.js',
-    page_action: './lib/page_action/main.js',
-    browser_action: './lib/browser_action/main.js',
+    content: './lib/content.js',
+    background: './lib/background.js',
+    options: './lib/options.js',
+    page_action: './lib/page_action.js',
+    browser_action: './lib/browser_action.js',
   },
   output: {
     filename: '[name].js',

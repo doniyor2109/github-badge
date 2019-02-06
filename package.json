@@ -15,7 +15,9 @@
     "query-string": "^6.2.0",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
-    "react-virtualized": "^9.21.0"
+    "react-virtualized": "^9.21.0",
+    "shields.io": "badges/shields",
+    "webext-dynamic-content-scripts": "^5.0.1"
   },
   "license": "MIT",
   "devDependencies": {
