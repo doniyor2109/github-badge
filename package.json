@@ -5,7 +5,7 @@
   "scripts": {
     "predata": "yarn --cwd node_modules/shields.io install",
     "data": "yarn --cwd node_modules/shields.io defs",
-    "build": "NODE_ENV=production webpack",
+    "build": "webpack",
     "start": "webpack-dev-server --dev"
   },
   "dependencies": {

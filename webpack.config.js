@@ -56,7 +56,7 @@ module.exports = {
       chunks: ['page_action'],
     })
   ],
-  devtool: env === 'development' && 'eval-source-map',
+  devtool: 'cheap-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
