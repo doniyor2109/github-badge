@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "predata": "yarn --cwd node_modules/shields.io install",
-    "data": "yarn --cwd node_modules/shields.io defs",
+    "prebuild-defs": "yarn --cwd node_modules/shields.io install",
+    "build-defs": "yarn --cwd node_modules/shields.io defs",
     "build": "webpack",
     "start": "webpack-dev-server --dev"
   },
@@ -36,6 +36,7 @@
   },
   "resolutions": {
     "terser": "3.14.1",
-    "**/gh-badges": "^2.1.0"
+    "**/gh-badges": "^2.1.0",
+    "**/js-yaml": "^3.12.1"
   }
 }
