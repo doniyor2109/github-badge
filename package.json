@@ -5,6 +5,7 @@
   "scripts": {
     "prebuild-defs": "yarn --cwd node_modules/shields.io install",
     "build-defs": "yarn --cwd node_modules/shields.io defs",
+    "postinstal": "yarn build-defs",
     "build": "webpack",
     "start": "webpack-dev-server --dev"
   },
@@ -17,7 +18,8 @@
     "react-dom": "^16.8.0-alpha.1",
     "react-virtualized": "^9.21.0",
     "shields.io": "badges/shields",
-    "webext-dynamic-content-scripts": "^5.0.1"
+    "webext-dynamic-content-scripts": "^5.0.1",
+    "xml2js": "^0.4.19"
   },
   "license": "MIT",
   "devDependencies": {
