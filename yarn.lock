@@ -2778,7 +2778,7 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gh-badges@^2.1.0, "gh-badges@file:gh-badges":
+gh-badges@^2.1.0, "gh-badges@file:../../Library/Caches/Yarn/v4/npm-shields-io-0.0.0-44c891a3be06609e70aa3e2fd4e563b24e76415e/node_modules/shields.io/gh-badges":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/gh-badges/-/gh-badges-2.1.0.tgz#08f1f1dc014073097b819556261407c895c6c9f2"
   integrity sha512-G86cLXvvd2TEeQFqWPLsgXUrmK225ySwTfq926kC5FuXLsbmUnkSEyfTd7RyBnxW4o2ryjRug9ipXEDE/O9V4A==
@@ -6020,7 +6020,7 @@ shields.io@badges/shields:
     escape-string-regexp "^1.0.5"
     fast-xml-parser "^3.12.12"
     fsos "^1.1.3"
-    gh-badges "file:../../Library/Caches/Yarn/v4/npm-shields-io-0.0.0-44c891a3be06609e70aa3e2fd4e563b24e76415e/node_modules/shields.io/gh-badges"
+    gh-badges "file:../../Library/Caches/Yarn/v4/npm-shields-io-0.0.0/node_modules/shields.io/gh-badges"
     glob "^7.1.1"
     joi "14.3.1"
     joi-extension-semver "2.0.0"
@@ -6918,6 +6918,11 @@ webext-dynamic-content-scripts@^5.0.1:
   integrity sha512-R0TPOV9B5hDnSlOTaxxEkuX3L8rm+8KQSWpdxAqE+yYv/YqaDXip+8M39v00jXGTkpz36YdAnGjRdnzHw7taOw==
   dependencies:
     webext-content-script-ping "^2.0.1"
+
+webextension-polyfill@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/webextension-polyfill/-/webextension-polyfill-0.4.0.tgz#9cc5a60f0f2bf907a6b349fdd7e61701f54956f9"
+  integrity sha512-oreMp+EoAo1pzRMigx4jB5jInIpx6NTCySPSjGyLLee/dCIPiRqowCEfbFP8o20wz9SOtNwSsfkaJ9D/tRgpag==
 
 webidl-conversions@^2.0.0:
   version "2.0.1"
