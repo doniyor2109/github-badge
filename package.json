@@ -22,7 +22,8 @@
     "shields.io": "badges/shields",
     "webext-dynamic-content-scripts": "^5.0.1",
     "webextension-polyfill": "^0.4.0",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "js-yaml": "^3.12.1"
   },
   "license": "MIT",
   "devDependencies": {
