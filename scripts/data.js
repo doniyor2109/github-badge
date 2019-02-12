@@ -1,16 +1,9 @@
 const path = require('path');
 const fs = require('fs');
-const loadLogos = require('shields.io/lib/load-logos');
-const loadSimpleIcons = require('shields.io/lib/load-simple-icons');
 const { collectDefinitions } = require('shields.io/core/base-service/loader')
 const servicesList = require('../lib/services');
 
 const { services, categories } = collectDefinitions();
-
-const logos = {
-  ...loadLogos(),
-  ...loadSimpleIcons(),
-};
 
 const mockConfigs = {
   github: {},
@@ -19,40 +12,49 @@ const mockConfigs = {
   bower: {},
 };
 
-function findLogo(name) {
-  return Object.keys(logos).find(logo => name.toLowerCase().includes(logo));
+function base64(data) {
+  return Buffer.from(data).toString('base64');
 }
 
 function writeJSON(filename, data) {
   fs.writeFileSync(
     path.join(__dirname, '../lib', filename),
-    JSON.stringify(data)
+    JSON.stringify(data, null, 2)
   );
 }
 
-const flattenedServices = services
-  .reduce((accum, current, outer) => {
-    const { examples, name } = current;
-    const logo = findLogo(name);
+function flattenServices(services) {
+  return services
+    .reduce((accum, { examples, name }) => {
+      function mapExamples(item) {
+        return {
+          ...item,
+          name,
+        };
+      }
+      return accum.concat(examples.map(mapExamples));
+    }, [])
+}
 
-    return accum.concat(
-      examples.map((item, inner) => {
-        const { example, queryParams } = item;
-
-        example.queryParams = { ...queryParams, logo };
-
-        return Object.assign(item, {id: `${outer}-${inner}`, name });
-      })
-    );
-  }, [])
+const flattenedServices = flattenServices(services)
   .filter(({ example, name }) => {
     const tokens = Object.keys(example.namedParams);
     const service = servicesList[name];
-    return service && tokens.every(key => service.getParams(mockConfigs).hasOwnProperty(key));
-  });
+    return service && tokens.every(key => new service(mockConfigs).imgNamedParams.hasOwnProperty(key));
+  })
+  .map(({ id, title, name, example: { pattern, queryParams } }) => ({
+    id: base64(`${name}${title}${pattern}`),
+    name,
+    title,
+    img: {
+      pattern,
+      queryParams,
+    },
+  }));
 
 const defaultValues = Object.keys(servicesList).reduce((curr, key) => {
-  const params = servicesList[key].getParams(mockConfigs);
+  const service = servicesList[key];
+  const params = new service(mockConfigs).imgNamedParams;
 
   for (const param in params) {
     params[param] = 'unknown';
@@ -62,8 +64,6 @@ const defaultValues = Object.keys(servicesList).reduce((curr, key) => {
     ...params,
   };
 }, {});
-
-
 
 writeJSON('services_list.json', flattenedServices);
 writeJSON('default_value.json', defaultValues);
