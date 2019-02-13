@@ -40,7 +40,7 @@ const flattenedServices = flattenServices(services)
   .filter(({ example, name }) => {
     const tokens = Object.keys(example.namedParams);
     const service = servicesList[name];
-    return service && tokens.every(key => new service(mockConfigs).imgNamedParams.hasOwnProperty(key));
+    return service && tokens.every(key => service.supporterImgParams.includes(key));
   })
   .map(({ id, title, name, example: { pattern, queryParams } }) => ({
     id: base64(`${name}${title}${pattern}`),
@@ -54,15 +54,12 @@ const flattenedServices = flattenServices(services)
 
 const defaultValues = Object.keys(servicesList).reduce((curr, key) => {
   const service = servicesList[key];
-  const params = new service(mockConfigs).imgNamedParams;
+  const supporterImgParams = service.supporterImgParams;
 
-  for (const param in params) {
-    params[param] = 'unknown';
+  for (const param of supporterImgParams) {
+    curr[param] = '_unknown_';
   }
-  return {
-    ...curr,
-    ...params,
-  };
+  return curr;
 }, {});
 
 writeJSON('services_list.json', flattenedServices);

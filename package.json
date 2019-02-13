@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "prebuild-defs": "yarn --cwd node_modules/shields.io install",
+    "predefs": "yarn --cwd node_modules/shields.io install",
     "postinstal": "yarn build-defs",
-    "defs": "node ./scripts/data.js",
+    "defs": "babel-node ./scripts/data.js",
     "prestart": "yarn build-defs",
     "build": "webpack",
     "start": "webpack-dev-server --dev"
@@ -13,6 +13,7 @@
   "dependencies": {
     "antd": "^3.13.0",
     "gh-badges": "^2.1.0",
+    "js-yaml": "^3.12.1",
     "lodash": "^4.17.11",
     "query-string": "^6.2.0",
     "react": "^16.8.0-alpha.1",
@@ -21,12 +22,12 @@
     "shields.io": "badges/shields",
     "webext-dynamic-content-scripts": "^5.0.1",
     "webextension-polyfill": "^0.4.0",
-    "xml2js": "^0.4.19",
-    "js-yaml": "^3.12.1"
+    "xml2js": "^0.4.19"
   },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
